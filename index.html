@@ -1,11 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="tg">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Cartoon Maker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+    }
+    textarea, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+    button {
+      cursor: pointer;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
+
+<div class="box">
   <h1>🎬 AI Cartoon Maker</h1>
-  <p>Create your own cartoon story.</p>
+  <p>Сюжети мультфильми худро соз!</p>
+
+  <textarea id="idea" rows="5"
+    placeholder="Масалан: Ду дӯст ба сайёраи дигар мераванд..."></textarea>
+
+  <select id="language">
+    <option value="tg">Тоҷикӣ</option>
+    <option value="ru">Русский</option>
+    <option value="en">English</option>
+  </select>
+
+  <button onclick="generateStory()">✨ Generate Story</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function generateStory() {
+  const idea = document.getElementById("idea").value.trim();
+  const language = document.getElementById("language").value;
+  const result = document.getElementById("result");
+
+  if (!idea) {
+    result.textContent = "Лутфан аввал идеяи мультфильмро навис.";
+    return;
+  }
+
+  let text = "";
+
+  if (language === "tg") {
+    text =
+      "🎬 Номи мультфильм:\nСафари ғайриоддӣ\n\n" +
+      "📖 Сюжет:\n" + idea +
+      "\n\n👥 Қаҳрамонҳо:\n1. Қаҳрамони асосӣ\n2. Дӯсти ӯ\n3. Қаҳрамони асроромез\n\n" +
+      "🎞️ Қисми 1:\nҚаҳрамонҳо саёҳати худро оғоз мекунанд...";
+  } else if (language === "ru") {
+    text =
+      "🎬 Название мультфильма:\nНеобычное путешествие\n\n" +
+      "📖 Сюжет:\n" + idea +
+      "\n\n👥 Персонажи:\n1. Главный герой\n2. Его друг\n3. Таинственный персонаж\n\n" +
+      "🎞️ Серия 1:\nГерои начинают своё приключение...";
+  } else {
+    text =
+      "🎬 Cartoon title:\nThe Amazing Journey\n\n" +
+      "📖 Story:\n" + idea +
+      "\n\n👥 Characters:\n1. Main hero\n2. Best friend\n3. Mysterious character\n\n" +
+      "🎞️ Episode 1:\nThe heroes begin their adventure...";
+  }
+
+  result.textContent = text;
+}
+</script>
+
 </body>
 </html>
